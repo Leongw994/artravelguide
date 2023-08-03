@@ -1,9 +1,11 @@
 //import 'dart:js';
 
+import 'package:artravel/cubit/cubits.dart';
 import 'package:artravel/widgets/app_large_text.dart';
 import 'package:artravel/widgets/app_text.dart';
 import 'package:artravel/widgets/responsive_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
@@ -52,7 +54,15 @@ class _WelcomePageState extends State<WelcomePage> {
                           ),
                         ),
                         SizedBox(height: 40),
-                        ResponsiveButton(width: 120)
+                        GestureDetector(
+                            onTap: () {
+                              BlocProvider.of<AppCubits>(context).getData();
+                            },
+                            child: Container(
+                              child:
+                                  Row(children: [ResponsiveButton(width: 130)]),
+                              width: 200,
+                            ))
                       ],
                     ),
                     Column(

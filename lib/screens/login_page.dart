@@ -1,3 +1,4 @@
+import 'package:artravel/screens/signup_page.dart';
 import 'package:artravel/screens/welcome_page.dart';
 import 'package:artravel/utils/color_utils.dart';
 import 'package:artravel/widgets/reusable_widgets.dart';
@@ -32,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
                 20, MediaQuery.of(context).size.height * 0.2, 20, 0),
             child: Column(
               children: <Widget>[
-                logoWidget("images/castle.png"),
+                logoWidget("images/book.png"),
                 SizedBox(height: 20),
                 Text('MyNotts',
                     textAlign: TextAlign.center,
@@ -55,11 +56,33 @@ class _LoginPageState extends State<LoginPage> {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => WelcomePage()));
                 }),
+                SizedBox(height: 5),
+                signUpBtn()
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+
+  Row signUpBtn() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text("Don't have an account with us?",
+            style: TextStyle(color: Colors.black)),
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => SignUpPage()));
+          },
+          child: const Text(
+            "Sign Up",
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+        )
+      ],
     );
   }
 }
